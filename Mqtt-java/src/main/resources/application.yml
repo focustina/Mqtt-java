@@ -1,0 +1,9 @@
+emqx:
+  broker: tcp://192.168.16.206
+  userNname: root
+  password: root
+  cleansession: true
+  reconnect: true
+  timeout: 2000
+  keepalive: 10
+
