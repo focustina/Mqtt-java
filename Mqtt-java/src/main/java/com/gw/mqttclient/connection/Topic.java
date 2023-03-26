@@ -3,6 +3,7 @@ package com.gw.mqttclient.connection;
 import org.springframework.stereotype.Component;
 
 import java.lang.annotation.*;
+import com.gw.mqttclient.connection.Pattern;
 
 /**
  * @author bailing
@@ -17,6 +18,7 @@ import java.lang.annotation.*;
 public @interface Topic {
     /**
      * topic
+     *
      */
     String topic() default "";
 
@@ -28,7 +30,7 @@ public @interface Topic {
     /**
      * 订阅模式
      */
-    pattern pattern() default pattern.NONE;
+    Pattern pattern() default Pattern.NONE;
 
     /**
      * 共享订阅组
