@@ -14,11 +14,11 @@ import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
 public class SubsriptTopic {
     private String topic;
     private String subtopic;
-    private Pattern pattern;
+    private String pattern;
     private int qos;
     private IMqttMessageListener imqttMessageListener;
     public  String getPattern(){
-        return pattern.toString();
+        return pattern;
 
     }
 

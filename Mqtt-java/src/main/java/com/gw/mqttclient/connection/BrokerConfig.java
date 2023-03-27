@@ -1,5 +1,6 @@
 package com.gw.mqttclient.connection;
 import lombok.SneakyThrows;
+import org.eclipse.paho.client.mqttv3.IMqttMessageListener;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,6 @@ import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 @Slf4j
 @Configuration
@@ -51,9 +51,19 @@ public class BrokerConfig {
             Topic annotation = AnnotationUtils.findAnnotation(classByteCode, Topic.class);
             String topic = annotation.topic();
             int qos = annotation.qos();
-            Pattern pattern = annotation.;
-
+            String pattern = annotation.pattern();
+            String group = annotation.group();
+            String subTopic = topic;
+            if (pattern == Pattern.SHARE){
+                subTopic = "$share/" + group + "/" + topic;
+            }else if (pattern == Pattern.QUEUE){
+                subTopic = "$queue/" + topic;
+            }
+            topicmap.add(new SubsriptTopic(topic,subTopic,pattern,qos,(IMqttMessageListener) applicationContext.getBean(classByteCode)));
         }
+        client.setCallback(new MqttCallback(topicmap));
+        client.connect(options);
+        return client;
 
     }
 

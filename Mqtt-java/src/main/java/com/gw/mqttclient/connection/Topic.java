@@ -30,7 +30,7 @@ public @interface Topic {
     /**
      * 订阅模式
      */
-    Pattern pattern() default Pattern.NONE;
+    String pattern() default ;
 
     /**
      * 共享订阅组

@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import com.gw.mqttclient.connection.ClientConfig;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 @Slf4j
 public class MqttCallback implements MqttCallbackExtended {
@@ -73,13 +72,12 @@ public class MqttCallback implements MqttCallbackExtended {
      * @throws Exception
      */
 
-    public
 
 
     @Override
     public void messageArrived(String topic, MqttMessage massage) throws Exception {
         for (SubsriptTopic subsriptTopic : topicmap){
-            if (subsriptTopic.getPattern() !=  && isMatched(subsriptTopic.getTopic(),topic)){
+            if (subsriptTopic.getPattern() != Pattern.toString() && isMatched(subsriptTopic.getTopic(),topic)){
                 subsriptTopic.getImqttMessageListener().messageArrived(topic,massage);
                 break;
             }
