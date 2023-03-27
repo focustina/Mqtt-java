@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Mqtt-java/Mqtt-client.iml" filepath="$PROJECT_DIR$/Mqtt-java/Mqtt-client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/workplace.iml" filepath="$PROJECT_DIR$/.idea/workplace.iml" />
     </modules>
   </component>
 </project>

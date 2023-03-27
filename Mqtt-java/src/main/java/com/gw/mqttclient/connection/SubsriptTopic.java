@@ -17,6 +17,10 @@ public class SubsriptTopic {
     private Pattern pattern;
     private int qos;
     private IMqttMessageListener imqttMessageListener;
+    public  String getPattern(){
+        return pattern.toString();
+
+    }
 
 
 
